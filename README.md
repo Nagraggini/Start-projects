@@ -1,16 +1,48 @@
-Here are my first attempts, in a few programming languages.
+# Start-projects
 
-If you are interested in how to start being a web developer, this is my blog. At the moment, I only have a Hungarian version:
-[My blog - Hungarian version](https://nagraggini.github.io/Web-practising-and-fun/Web_Development/Practising/1-HTML%20Practising/2-Blog.html)
+Welcome! This is my collection of various programming projects, starter templates, and learning materials.
 
-# My Android Apps
+## 📝 Blog
 
-These are my first Android applications.
+If you are interested in how to start as a web developer, check out my blog (currently only in Hungarian):
+👉 [My blog - Hungarian version](https://blog-sqj1.onrender.com/)
 
-You can install them by downloading the APK files from the Apk Files folder.
+---
 
-# Java websites
+## 📱 Android Applications
 
-ElsoJavaWebapp: Classic Servlet + JSP.
+These are my first Android projects.
 
-demo: First version of my Spring Boot Dynamic website.
+- **Installation:** You can find and download the installable `.apk` files in the `android-projects` folder.
+
+## 🌐 Java Web Projects
+
+- **ElsoJavaWebapp:** A classic implementation using Servlet + JSP.
+- **demo:** The first version of my Spring Boot dynamic website.
+
+---
+
+## 📂 Folders & Structure
+
+- **android-projects** - Mobile app projects and APK files.
+* **azure-swa** - Azure Static Web Apps deployments and configurations.
+- **csharp-console** - C# console applications and logic.
+- **java-backend** - Server-side Java (Spring Boot, APIs).
+- **java-console** - Basic Java programs and exercises.
+- **java-console-exams** - Solutions for various Java exams.
+- **java-gui** - Java desktop applications (Swing/JavaFX).
+- **python-console** - Python scripts and automation tools.
+- **static-websites** - HTML, CSS, and JavaScript website templates.
+  <!--* **api-specs** - API documentation and Postman collections.-->
+
+---
+
+## 🛠 Tech Stack
+
+- **Languages:** Java, C#, Python, JavaScript
+- **Technologies:** Spring Boot, Servlets, JSP
+- **Tools:** Git, Azure, Android Studio, Visual Studio Code
+
+## 👤 Author
+
+**Andrea Freud (Nagraggini)** _Budapest, Hungary_
