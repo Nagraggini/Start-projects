@@ -14,61 +14,7 @@ public class KosarligaGyakorlas {
 
     // https://infojegyzet.hu/vizsgafeladatok/okj-programozas/szoftverfejleszto-200526/
 
-    /*
-     * Mit használj a vizsgán?
-     * Beolvasás: Mindig olvass be egy ArrayList-be (ez az alap).
-     * 
-     * Keresés/Szűrés/Statisztika: Használd a listát és a Stream API-t.
-     * 
-     * Egyedi kulcsos keresés: Csak akkor készíts HashMap-et, ha a feladat
-     * kifejezetten kéri, hogy egy azonosító alapján keress ki valamit
-     * villámgyorsan.
-     */
-
-    // =====================================================================================
-    // STREAM API GYORSSEGÉD (A három szint)
-    // =====================================================================================
-    // SZINT | MŰVELET | LEÍRÁS
-    // =====================================================================================
-    // 1. FORRÁS | .stream() | Elindítja a folyamatot. (KÖTELEZŐ)
-    // =====================================================================================
-    // 2. KÖZTES | .filter(x -> ...) | Szűrés (csak az marad, ami TRUE).
-    // (Bármennyi | .map(x -> x.get) | Átalakítás (pl. objektumból csak egy mező).
-    // lehet) | .sorted() | Sorba rendezés.
-    // | .distinct() | Ismétlődések törlése.
-    // | .limit(n) | Csak az első n darab elemet hagyja meg.
-    // =====================================================================================
-    // 3. LEZÁRÓ | .count() | Megszámolja az elemeket -> eredmény: long.
-    // (Csak EGY | .forEach(x -> ...) | Művelet minden elemen (pl. kiírás) -> void.
-    // lehet a | .toList() | Új listába gyűjt -> eredmény: List<T>.
-    // végén!) | .anyMatch(x -> ...) | Van-e legalább egy ilyen? -> boolean.
-    // | .findFirst() | Visszaadja a legelsőt -> Optional<T>.
-    // =====================================================================================
-
-    // PÉLDA GYORSAN:
-    // long db = lista.stream().filter(x -> x.getHazai().equals("Real
-    // Madrid")).count();
-    // lista.stream().filter(x -> x.getHazaiPont() >
-    // 100).forEach(System.out::println);
-    // List<String> varosok = lista.stream().map(x ->
-    // x.getHelyszin()).distinct().toList();
-
-    // PÉLDÁK A HASZNÁLATRA:
-
-    // 1. Megszámolás: Hány meccs volt Madridban?
-    // long db = lista.stream().filter(x ->
-    // x.getHelyszin().equals("Madrid")).count();
-
-    // 2. Kiíratás: Írd ki a 100 pont feletti hazai meccseket!
-    // lista.stream().filter(x -> x.getHazaiPont() >
-    // 100).forEach(System.out::println);
-
-    // 3. Gyűjtés: Add vissza a városok neveit ABC sorrendben, ismétlődés nélkül!
-    // List<String> varosok = lista.stream()
-    // .map(AbcKosarlabdaLiga::getHelyszin)
-    // .distinct()
-    // .sorted()
-    // .toList();
+    // Puska: https://github.com/Nagraggini/blog/blob/main/Java_basic_knowledge.md
 
     public static ArrayList<AbcKosarlabdaLiga> lista = new ArrayList<>();
     public static HashMap<Integer, AbcKosarlabdaLiga> hmap = new HashMap<>();
@@ -78,8 +24,7 @@ public class KosarligaGyakorlas {
         Fajlbeolvasasa("java-console-exams/eredmenyek.csv");
 
         System.out.println("Sorok száma: " + lista.size());
-        melyikVarosbanHanyMeccsVolt(lista);
-
+        nagyFolennyelNyertek(lista, 3);
     }
 
     public static void Fajlbeolvasasa(String fajlneve) {
@@ -159,13 +104,13 @@ public class KosarligaGyakorlas {
 
     public static void nagyFolennyelNyertek(ArrayList<AbcKosarlabdaLiga> lista, int kulonbseg) {
 
-        // A pontszámok közti különbség alapján szűrünk.
-        lista.stream()
+        // A pontszámok közti különbség alapján szűrünk és megszámoljuk hány db ilyen
+        // meccs volt.
+        System.out.println(lista.stream()
                 // Csak azokat hagyjuk meg, ahol a különbség pontosan ennyi
                 .filter(l -> Math.abs(l.getIdegenPont() - l.getHazaiPont()) == kulonbseg)
-                // A maradékot pedig kiíratjuk
-                .forEach(l -> System.out.println(l.toString()));
-
+                // Megszámoljuk hány ilyen meccs volt.
+                .count() + " db olyan meccs volt, amiknél a pont különbség " + kulonbseg + " pont volt.");
     }
 
     public static void realMadridMeccsek(ArrayList<AbcKosarlabdaLiga> lista) {
@@ -209,5 +154,52 @@ public class KosarligaGyakorlas {
         System.out.println("4. feladat: Volt-e döntetlen? " + ((int) dontetlen == 0 ? "nem" : "igen"));
 
     }
+
+    /*
+     * TODO
+     * Könnyű feladatok
+     * 
+     * Hazai győzelmek
+     * Listázd ki az összes meccset, ahol a hazai csapat nyert (hazai_pont >
+     * idegen_pont).
+     * 
+     * Real Madrid meccsek
+     * Szűrd ki az összes meccset, ahol a Real Madrid játszott hazai vagy idegen
+     * csapatként.
+     * 
+     * Hazai csapatok nevei
+     * Hozz létre egy egyszerű listát az összes hazai csapat nevével, ismétlődés
+     * nélkül.
+     * 
+     * Közepes feladatok
+     * 
+     * Átlagos hazai pont
+     * Számold ki az átlagos pontszámot, amit a hazai csapatok szereztek az összes
+     * meccsen.
+     * 
+     * Top 3 leggyőztes hazai csapat
+     * Találd meg a 3 legtöbbször nyerő hazai csapatot. (Hazai győzelem = hazai_pont
+     * > idegen_pont)
+     * 
+     * Pontkülönbség nagyobb mint 10
+     * Listázd ki azokat a meccseket, ahol a győztes legalább 10 ponttal nyert.
+     * 
+     * Összes pont csapatokra bontva
+     * Készíts egy Map<String, Integer>-t, ahol minden csapat nevehez az összes
+     * szerzett pont van hozzáadva (hazai és idegen meccsek együtt).
+     * 
+     * Nehéz feladatok
+     * 
+     * Legjobb helyszín
+     * Találd meg azt a helyszínt, ahol a legtöbb meccset játszották.
+     * 
+     * Legtöbb győzelmet szerző csapat
+     * Számold meg melyik csapat nyerte a legtöbb meccset (hazai + idegen győzelmek
+     * együtt).
+     * 
+     * Top 3 legmagasabb pontszámú meccs
+     * Találd meg a 3 meccset a legmagasabb összpontszámmal (hazai_pont +
+     * idegen_pont), és rendezd csökkenő sorrendbe.
+     */
 
 }

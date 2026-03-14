@@ -13,56 +13,7 @@ public class Apik {
         record Car(String type, String make, String model, Integer engineCapacity) {
         }
 
-        // =====================================================================================
-        // STREAM API PUSKA - VIZSGÁHOZ ÉS GYAKORLÁSHOZ
-        // =====================================================================================
-        // SZABÁLY: Forrás (1) -> Köztes műveletek (bármennyi) -> Lezáró művelet (1)
-        // =====================================================================================
-        // 1. SZINT: FORRÁS (A csap megnyitása)
-        // -------------------------------------------------------------------------------------
-        // .stream() -> Kollekcióból (List, Set) adatfolyamot készít.
-        // Stream.of(1,2,3) -> Fix elemekkből készít streamet.
-        // -------------------------------------------------------------------------------------
-        // 2. SZINT: KÖZTES MŰVELETEK (A futószalag gépei - "Lusták", csak ha kell,
-        // futnak)
-        // -------------------------------------------------------------------------------------
-        // .filter(x -> ...) -> Szűrés: csak azok mennek tovább, amikre IGAZ a feltétel.
-        // .map(x -> ...) -> Átalakítás: pl. Objektumból csak egy mező (String, int).
-        // .flatMap(x -> ...) -> Kilapítás: Listák listájából csinál egy sima listát.
-        // .sorted() -> Sorba rendezés (alapértelmezett vagy Comparator alapján).
-        // .distinct() -> Duplikációk kiszűrése (Equals alapján).
-        // .limit(n) -> Csak az első n darab elemet engedi tovább.
-        // .peek(x -> ...) -> Debugolásra: belenézhetsz a folyamatba módosítás nélkül.
-        // -------------------------------------------------------------------------------------
-        // 3. SZINT: LEZÁRÓ MŰVELETEK (A gomb megnyomása - Itt fut le a kód!)
-        // -------------------------------------------------------------------------------------
-        // .count() -> Megszámolja az elemeket. Eredmény: long.
-        // .toList() -> Új Listába gyűjti az elemeket. (Java 16+)
-        // .collect(Collectors.X)-> Összetettebb gyűjtés (toMap, groupingBy, joining).
-        // .forEach(x -> ...) -> Végrehajt valamit minden elemen (pl. kiíratás).
-        // Eredmény: void.
-        // .anyMatch(x -> ...) -> Van-e legalább egy elem, ami megfelel? Eredmény:
-        // boolean.
-        // .allMatch(x -> ...) -> MINDEN elem megfelel a feltételnek? Eredmény: boolean.
-        // .findFirst() -> Visszaadja a legelső elemet. Eredmény: Optional<T>.
-        // =====================================================================================
-
-        // GYORS PÉLDÁK (Másold ki, ami kell):
-
-        // SZŰRÉS ÉS SZÁMOLÁS
-        // long db = lista.stream().filter(x -> x.getPont() > 10).count();
-
-        // EGYEDI ÉRTÉKEK ABC SORRENDBEN
-        // List<String> nevek =
-        // lista.stream().map(X::getNev).distinct().sorted().toList();
-
-        // ELSŐ TALÁLAT KEZELÉSE (Biztonságos kiíratás)
-        // lista.stream().filter(x -> x.getId() ==
-        // 5).findFirst().ifPresent(System.out::println);
-
-        // ÖSSZETETT CSOPORTOSÍTÁS (Városok szerint hány meccs)
-        // Map<String, Long> stat = lista.stream()
-        // .collect(Collectors.groupingBy(X::getVaros, Collectors.counting()));
+        // Puska: https://github.com/Nagraggini/blog/blob/main/Java_basic_knowledge.md
 
         public static void main(String[] args) {
                 List<Car> cars = List.of(new Car("sedan", "BMW", "530", 1998),
@@ -171,7 +122,7 @@ public class Apik {
                  * láncon belül.
                  */
 
-                // 3. Párhuzamosítás
+                // & 5. Párhuzamosítás
                 // A parallelStream() több szálon futtatja a műveleteket
                 cars.parallelStream().forEach(car -> {
                         System.out.println(

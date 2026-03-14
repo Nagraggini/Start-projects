@@ -15,18 +15,7 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-
-/*
-    * Mit használj a vizsgán?
-    * Beolvasás: Mindig olvass be egy ArrayList-be (ez az alap).
-    * 
-    * Keresés/Szűrés/Statisztika: Használd a listát és a Stream API-t.
-    * 
-    * Egyedi kulcsos keresés: Csak akkor készíts HashMap-et, ha a feladat
-    * kifejezetten kéri, hogy egy azonosító alapján keress ki valamit
-    * villámgyorsan.
-    */
-   
+// Puska: https://github.com/Nagraggini/blog/blob/main/Java_basic_knowledge.md
 public class HaladoJavaOsszefoglalo {
 
         public static void main(String[] args) {
@@ -34,11 +23,24 @@ public class HaladoJavaOsszefoglalo {
                 h.StreamFunkciok();
         }
 
-        public void FajlBeolvasas() {
+        public void FajlBeolvasas(String fajlneve) {
+
+                // Van amikor ez a jó: StandardCharsets.UTF_8
+                // Van amikor ez a jó:Charset.forName("windows-1250")
+
+                Path path = Path.of(fajlneve);
+
+                // Ellenőrzés és beolvasás egyben
+                if (!Files.exists(path)) {
+                        System.out.println("Nem létezik a fájl!");
+                        System.out.println("Itt keresem: " + System.getProperty("user.dir"));
+                        return; // Ha nincs fájl, ne is menjünk tovább a try-ra
+                }
+
                 ArrayList<Operatorok2> lista = new ArrayList<>();
 
                 try {
-                        List<String> sorok = Files.readAllLines(Path.of("kifejezesek.txt"), StandardCharsets.UTF_8);
+                        List<String> sorok = Files.readAllLines(path, StandardCharsets.UTF_8);
 
                         // Itt mehetünk 0-túl, mert nincs oszlopnév.
                         for (int i = 0; i < sorok.size(); i++) {
@@ -314,6 +316,6 @@ public class HaladoJavaOsszefoglalo {
                 lista.forEach(l -> System.out.println(l.getBal() + " " + l.getOperator() + " " + l.getJobb()));
         }
 
-        // printf leírás is kéne
+        // TODO: printf leírás is kéne
 
 }
