@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Kalóriaszámláló
+Comment=Kalóriaszámláló Java alkalmazás
+Exec=java -jar /home/andi/DokumentumokKaloriaszamlaloApp.jar
+Icon=java
+Terminal=false
+Type=Application
+Categories=Utility;
