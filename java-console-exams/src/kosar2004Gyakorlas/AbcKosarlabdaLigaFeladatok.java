@@ -1,4 +1,4 @@
-package kosar2004;
+package kosar2004Gyakorlas;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
