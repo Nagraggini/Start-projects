@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "BalkezesekFeladatok",
+            "request": "launch",
+            "mainClass": "balkezesek.BalkezesekFeladatok",
+            "projectName": "vizsgafeladatok"
+        },
+        {
+            "type": "java",
             "name": "ApikGrouping",
             "request": "launch",
             "mainClass": "hasznosInfok.ApikGrouping",
