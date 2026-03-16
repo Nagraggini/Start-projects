@@ -24,7 +24,7 @@ public class GyakorlasSteamAPIKezdoSzint {
 
     public static void main(String[] args) {
 
-        Fajlbeolvasasa("java-console-exams/eredmenyek.csv");
+        Fajlbeolvasasa("java-console-intermediate/eredmenyek.csv");
 
         System.out.println("Sorok száma: " + lista.size());
         // nagyFolennyelNyertek(lista, 3);
@@ -256,5 +256,4 @@ public class GyakorlasSteamAPIKezdoSzint {
         }
     }
 
-    
 }

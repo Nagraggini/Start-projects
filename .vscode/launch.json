@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "GyakorlasSteamAPIKezdoSzint",
+            "request": "launch",
+            "mainClass": "kosar2004Gyakorlas.GyakorlasSteamAPIKezdoSzint",
+            "projectName": ""
+        },
+        {
+            "type": "java",
             "name": "KosarligaGyakorlas",
             "request": "launch",
             "mainClass": "src.kosar2004Gyakorlas.KosarligaGyakorlas",
