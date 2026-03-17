@@ -33,7 +33,11 @@ public class GyakorlasSteamAPIKozepesSzint {
         System.out.println("Sorok száma: " + lista.size());
 
         // helyszinek(lista);
-        legnagyobbPontKulonbseg(lista);
+        // legnagyobbPontKulonbseg(lista);
+        // osszesPont(lista);
+        // hazaiCsapatok(lista);
+        // voltDontetlen(lista);
+        kisPontKulonbseguMeccsek(lista);
 
     }
 
@@ -148,55 +152,112 @@ public class GyakorlasSteamAPIKozepesSzint {
         // Kiíratás.
         rendezettStat.forEach((k, v) -> System.out.println(k + " , pont különbség: " + v));
     }
-    /*
-     * // TODO: A fentieket gyakorold.
-     *
-     * // TODO Könnyű → Közepes feladatok
-     * 
-     * 8️⃣ Legkevesebb pont
-     * 
-     * Találd meg azt a meccset ahol a legkevesebb pont született összesen.
-     * 
-     * hazai_pont + idegen_pont 9️⃣ 2010 utáni meccsek
-     * 
-     * Írd ki az összes meccset ahol
-     * 
-     * idopont > 2010 🔟 200 pont feletti meccsek száma
-     * 
-     * Számold meg hány olyan meccs volt ahol
-     * 
-     * hazai_pont + idegen_pont > 200 Kicsit nehezebb 11️⃣ Csapatok száma
-     * 
-     * Számold meg hány különböző csapat szerepel az adatbázisban (hazai + idegen
-     * együtt).
-     * 
-     * 12️⃣ Meccsek száma csapatonként
-     * 
-     * Készíts egy Map<String, Long> statisztikát ahol:
-     * 
-     * csapat -> hány meccset játszott
-     * 
-     * (Hazai + idegen együtt.)
-     * 
-     * 13️⃣ Legtöbb pontot szerző csapat hazai pályán
-     * 
-     * Találd meg azt a csapatot amelyik
-     * 
-     * hazai_pont összesen
-     * 
-     * alapján a legtöbb pontot dobta.
-     * 
-     * 14️⃣ Hány különböző helyszín van
-     * 
-     * Számold meg hány különböző:
-     * 
-     * helyszin
-     * 
-     * van az adatbázisban.
-     * 
-     * 15️⃣ Legtöbb meccset játszó csapat
-     * 
-     * Találd meg melyik csapat szerepel a legtöbb meccsen (hazai + idegen együtt).
-     */
+
+    private static void osszesPont(ArrayList<AbcKosarlabdaLiga> lista) {
+        System.out.println("Összes dobott pont:" + lista.stream().mapToInt(m -> m.getHazaiPont() + m.getIdegenPont())
+                .sum());
+    }
+
+    private static void hazaiCsapatok(ArrayList<AbcKosarlabdaLiga> lista) {
+        System.out.println("Hazai csapatok nevei:");
+        lista.stream().map(AbcKosarlabdaLiga::getHazai).distinct().toList().forEach(x -> System.out.println(x));
+    }
+
+    private static void voltDontetlen(ArrayList<AbcKosarlabdaLiga> lista) {
+        System.out.println(
+                (lista.stream().anyMatch(x -> (x.getIdegenPont() - x.getHazaiPont()) == 0)) ? "Van döntetlen meccs."
+                        : "Nincs döntetlen meccs.");
+    }
+
+    private static void kisPontKulonbseguMeccsek(ArrayList<AbcKosarlabdaLiga> lista) {
+        System.out.println("Max 10 pont különbségű meccsek: ");
+        lista.stream().filter(x -> (Math.abs(x.getHazaiPont() - x.getIdegenPont())) > 10)
+                .forEach(x -> System.out.println(x.toString()));
+    }
 
 }
+/*
+ * // TODO: A fentieket gyakorold.
+ * 
+ * 5.
+ * meccsekSzama(lista)
+ * 
+ * Hány meccs van összesen?
+ * 
+ * 6.
+ * hazaiGyozelemDb(lista)
+ * 
+ * Hányszor nyert a hazai csapat?
+ * 
+ * 7.
+ * atlagHazaiPont(lista)
+ * 
+ * Mennyi az átlag hazai pont?
+ * 
+ * 8.
+ * varosMeccsei(lista, "Budapest")
+ * 
+ * Add vissza az adott város meccseit.
+ * 
+ * 9.
+ * elsoMeccs(lista)
+ * 
+ * Add vissza az első meccset (ha van).
+ * 
+ * 10.
+ * nincsNagyKulonbseg(lista)
+ * 
+ * Igaz-e, hogy nincs olyan meccs, ahol a különbség nagyobb mint 50?
+ * 
+ * 11.
+ * pontKulonbsegek(lista)
+ * 
+ * Készíts listát a pontkülönbségekből.
+ * 
+ * // TODO Könnyű → Közepes feladatok
+ * 
+ * 8️⃣ Legkevesebb pont
+ * 
+ * Találd meg azt a meccset ahol a legkevesebb pont született összesen.
+ * 
+ * hazai_pont + idegen_pont 9️⃣ 2010 utáni meccsek
+ * 
+ * Írd ki az összes meccset ahol
+ * 
+ * idopont > 2010 🔟 200 pont feletti meccsek száma
+ * 
+ * Számold meg hány olyan meccs volt ahol
+ * 
+ * hazai_pont + idegen_pont > 200 Kicsit nehezebb 11️⃣ Csapatok száma
+ * 
+ * Számold meg hány különböző csapat szerepel az adatbázisban (hazai + idegen
+ * együtt).
+ * 
+ * 12️⃣ Meccsek száma csapatonként
+ * 
+ * Készíts egy Map<String, Long> statisztikát ahol:
+ * 
+ * csapat -> hány meccset játszott
+ * 
+ * (Hazai + idegen együtt.)
+ * 
+ * 13️⃣ Legtöbb pontot szerző csapat hazai pályán
+ * 
+ * Találd meg azt a csapatot amelyik
+ * 
+ * hazai_pont összesen
+ * 
+ * alapján a legtöbb pontot dobta.
+ * 
+ * 14️⃣ Hány különböző helyszín van
+ * 
+ * Számold meg hány különböző:
+ * 
+ * helyszin
+ * 
+ * van az adatbázisban.
+ * 
+ * 15️⃣ Legtöbb meccset játszó csapat
+ * 
+ * Találd meg melyik csapat szerepel a legtöbb meccsen (hazai + idegen együtt).
+ */

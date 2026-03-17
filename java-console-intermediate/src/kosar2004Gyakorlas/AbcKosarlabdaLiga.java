@@ -50,8 +50,10 @@ public class AbcKosarlabdaLiga {
 
     @Override
     public String toString() {
-        return hazai + " - " + idegen + " eredmény: " + hazaiPont + " : " + idegenPont + " helyszín: " + helyszin
-                + " időpont: " + idopont;
+        return hazai + " - " + idegen
+                + " ; eredmény: " + hazaiPont + " : " + idegenPont
+                + " ; helyszín: " + helyszin
+                + " ; időpont: " + idopont;
     }
 
 }
