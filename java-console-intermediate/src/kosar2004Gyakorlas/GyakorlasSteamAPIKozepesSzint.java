@@ -30,14 +30,15 @@ public class GyakorlasSteamAPIKozepesSzint {
 
         Fajlbeolvasasa("java-console-exams/eredmenyek.csv");
 
-        System.out.println("Sorok száma: " + lista.size());
+        System.out.println("Ügyes vagy!");
 
         // helyszinek(lista);
         // legnagyobbPontKulonbseg(lista);
         // osszesPont(lista);
         // hazaiCsapatok(lista);
         // voltDontetlen(lista);
-        kisPontKulonbseguMeccsek(lista);
+        // kisPontKulonbseguMeccsek(lista);
+        meccsekSzama(lista);
 
     }
 
@@ -175,15 +176,13 @@ public class GyakorlasSteamAPIKozepesSzint {
                 .forEach(x -> System.out.println(x.toString()));
     }
 
+    private static void meccsekSzama(ArrayList<AbcKosarlabdaLiga> lista) {
+       System.out.println("Ennyi meccs volt összesen: "+lista.stream().map(AbcKosarlabdaLiga::getIdopont).count()+" db");
+    }
+
 }
 /*
  * // TODO: A fentieket gyakorold.
- * 
- * 5.
- * meccsekSzama(lista)
- * 
- * Hány meccs van összesen?
- * 
  * 6.
  * hazaiGyozelemDb(lista)
  * 

@@ -91,7 +91,7 @@ public class BalkezesekFeladatok {
         // 6. feladat
         System.out.println("6. feladat: \n");
 
-        // TODO
+        // TODO 6. feladat.
     }
 
     // 5. feladat.
