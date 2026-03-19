@@ -10,8 +10,8 @@ public class Balkezesek {
     private LocalDate utolso;
     private int suly; // fontban
     private int magassag; // inch-ben
-    
-    //Konstruktor
+
+    // Konstruktor
     public Balkezesek(String nev, LocalDate elso, LocalDate utolso, int suly, int magassag) {
         this.nev = nev;
         this.elso = elso;
@@ -20,7 +20,7 @@ public class Balkezesek {
         this.magassag = magassag;
     }
 
-    //Getterek
+    // Getterek
     public String getNev() {
         return nev;
     }
@@ -41,5 +41,17 @@ public class Balkezesek {
         return magassag;
     }
 
-    
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Balkezesek{");
+        sb.append("nev=").append(nev);
+        sb.append(", elso=").append(elso);
+        sb.append(", utolso=").append(utolso);
+        sb.append(", suly=").append(suly);
+        sb.append(", magassag=").append(magassag);
+        sb.append('}');
+        return sb.toString();
+    }
+
 }

@@ -13,6 +13,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BalkezesekFeladatok {
+    // https://infojegyzet.hu/vizsgafeladatok/okj-programozas/szoftverfejleszto-200204/
+
+    // puska: https://github.com/Nagraggini/blog/blob/main/Java_basic_knowledge.md
+
+    public static ArrayList<Balkezesek> lista = new ArrayList<>();
 
     public static void main(String[] args) {
 
@@ -22,8 +27,6 @@ public class BalkezesekFeladatok {
             System.out.println("A fájl nem található.\n Itt keresem: " + System.getProperty("user.dir"));
             return; // Ha nincs fájl, ne is menjünk tovább.
         }
-
-        ArrayList<Balkezesek> lista = new ArrayList<>();
 
         try {// Vs code-ban: Katt a Standard-ra, majd sárga körte ikon -> Surround statemnt
              // with
@@ -88,10 +91,9 @@ public class BalkezesekFeladatok {
          * megoldani, akkor dolgozzon az 1995-ös évvel!
          */
 
-        // 6. feladat
-        System.out.println("6. feladat: \n");
+        // 6. feladat a legvégén található.
 
-        // TODO 6. feladat.
+        // atlagSuly(1995);
     }
 
     // 5. feladat.
@@ -104,9 +106,6 @@ public class BalkezesekFeladatok {
 
             String bekertSor;
 
-            LocalDate hatarido1 = LocalDate.of(1989, 12, 31);
-            LocalDate hatarido2 = LocalDate.of(2000, 01, 01);
-
             while (true) {
                 System.out.print("Kérek egy 1990 és 1999 közötti évszámot!:");
 
@@ -115,13 +114,37 @@ public class BalkezesekFeladatok {
                 int ev = Integer.parseInt(bekertSor);
 
                 if (ev >= 1990 && ev <= 1999) {
-                    break; // Kilépünk a ciklusból.
+                    atlagSuly(ev);
+                    break;
                 } else {
                     System.out.print("Hibás adat!");
                 }
             }
         } catch (IOException e) {
         }
+
+    }
+
+    /*
+     * Mennyi az átlagsúlya a játékosoknak, akik az előző feladatban bekért évben
+     * pályára léptek! Az eredményt két tizedesjegyre
+     * kerekítve írja ki a képernyőre! Feltételezheti, hogy az első és az utolsó
+     * pályára lépés
+     * dátuma között minden évben játszottak a játékosok.
+     */
+    public static void atlagSuly(int ev) {
+        // 188,84 font volt 1995-ben.
+        // A bekért évszám dátummá alakítása.
+        LocalDate bekertEvEleje = LocalDate.of(ev, 1, 1);
+        LocalDate bekertEvVege = LocalDate.of(ev, 12, 31);
+        System.out.print("6. feladat: ");
+
+        System.out.printf("%.2f font %n", lista.stream().filter(x -> (!x.getElso().isAfter(
+                bekertEvVege)
+                && !x.getUtolso()
+                        .isBefore(
+                                bekertEvEleje)))
+                .mapToInt(x -> x.getSuly()).average().orElse(0));
 
     }
 }

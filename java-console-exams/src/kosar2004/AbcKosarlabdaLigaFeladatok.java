@@ -12,6 +12,8 @@ import java.util.stream.Collectors;
 public class AbcKosarlabdaLigaFeladatok {
         // https://infojegyzet.hu/vizsgafeladatok/okj-programozas/szoftverfejleszto-200526/
 
+        // puska: https://github.com/Nagraggini/blog/blob/main/Java_basic_knowledge.md
+
         public static ArrayList<AbcKosarlabdaLiga> lista = new ArrayList<>();
 
         public static void main(String[] args) {

@@ -5,6 +5,8 @@ import java.util.ArrayList;
 /*Feladat:
 https://infojegyzet.hu/vizsgafeladatok/okj-programozas/szoftverfejleszto-210511/ */
 
+// puska: https://github.com/Nagraggini/blog/blob/main/Java_basic_knowledge.md
+
 //A projekt gyökér könyvtára mellé hoztam létre a Jackie.txt-t.
 
 public class JackieFoprogram {

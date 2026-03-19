@@ -8,6 +8,13 @@
             "type": "java",
             "name": "GyakorlasSteamAPIKozepesSzint",
             "request": "launch",
+            "mainClass": "kosar2004gyakorlas.GyakorlasSteamAPIKozepesSzint",
+            "projectName": ""
+        },
+        {
+            "type": "java",
+            "name": "GyakorlasSteamAPIKozepesSzint",
+            "request": "launch",
             "mainClass": "kosar2004Gyakorlas.GyakorlasSteamAPIKozepesSzint",
             "projectName": ""
         },
