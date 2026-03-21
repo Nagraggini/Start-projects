@@ -35,7 +35,7 @@ These are my first Android projects.
 - **java-gui** - Java desktop applications (Swing/JavaFX).
 - **python-console** - Python scripts and automation tools.
 - **static-websites** - HTML, CSS, and JavaScript website templates.
-  <!--* **api-specs** - API documentation and Postman collections.-->
+  <!--* TODO later **api-specs** - API documentation and Postman collections.-->
 
 ---
 
