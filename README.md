@@ -26,7 +26,7 @@ These are my first Android projects.
 ## 📂 Folders & Structure
 
 - **android-projects** - Mobile app projects and APK files.
-* **azure-swa** - Azure Static Web Apps deployments and configurations.
+- **azure-swa** - Azure Static Web Apps deployments and configurations.
 - **csharp-console** - C# console applications and logic.
 - **java-backend** - Server-side Java (Spring Boot, APIs).
 - **java-console** - Basic Java programs and exercises.
@@ -35,6 +35,7 @@ These are my first Android projects.
 - **java-gui** - Java desktop applications (Swing/JavaFX).
 - **python-console** - Python scripts and automation tools.
 - **static-websites** - HTML, CSS, and JavaScript website templates.
+- **static-websites-exams** - Solutions for various Web developer exams. [Source](https://infojegyzet.hu/vizsgafeladatok/)
   <!--* TODO later **api-specs** - API documentation and Postman collections.-->
 
 ---
