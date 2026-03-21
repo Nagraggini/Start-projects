@@ -31,6 +31,7 @@ These are my first Android projects.
 - **java-backend** - Server-side Java (Spring Boot, APIs).
 - **java-console** - Basic Java programs and exercises.
 - **java-console-exams** - Solutions for various Java exams. [Source](https://infojegyzet.hu/vizsgafeladatok/)
+- **java-console-intermediate** - Exercises and examples using Java Stream API
 - **java-gui** - Java desktop applications (Swing/JavaFX).
 - **python-console** - Python scripts and automation tools.
 - **static-websites** - HTML, CSS, and JavaScript website templates.
