@@ -1,5 +1,5 @@
 [Itt](https://infojegyzet.hu/vizsgafeladatok/okj-programozas/szoftverfejleszto-200526/) találsz feladatokat a gyakorláshoz.
 
-A java jegyzeteimet [itt](https://github.com/Nagraggini/blog/blob/main/Java_basic_knowledge.md) találod.
+A java jegyzeteimet [itt](https://nagraggini.github.io/my-awesome-book/java.html) találod.
 
-[Kezdőknek szóló blogom.](https://nagraggini-blog.onrender.com/)
+[Kezdőknek szóló könyvem.](https://nagraggini.github.io/my-awesome-book/)
