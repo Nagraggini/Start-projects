@@ -14,6 +14,6 @@
 ---
 Hungarian - Magyar nyelvű jegyzeteim
 
-A saját java-s jegyzeteimet [itt](https://github.com/Nagraggini/blog/blob/main/Java_basic_knowledge.md) tudod megtekinteni.
+A saját java-s jegyzeteimet [itt](https://nagraggini.github.io/my-awesome-book/java.html) tudod megtekinteni.
 
-[Kezdőknek szóló blogom.](https://nagraggini-blog.onrender.com/)
+[Kezdőknek szóló könyvem.](https://nagraggini.github.io/my-awesome-book/)
