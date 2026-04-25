@@ -1,0 +1,21 @@
+# Java lefordított bájtkód (ezt nem akarjuk verziókezelni)
+*.class
+
+# IDE (fejlesztőkörnyezet) specifikus fájlok
+.settings/
+.bin/
+.metadata/
+.classpath
+.project
+*.iml
+.idea/
+*.swp
+
+# Build könyvtárak (ahová a Java fordítja a fájlokat)
+bin/
+out/
+target/
+
+# Operációs rendszer fájlok
+.DS_Store
+Thumbs.db
