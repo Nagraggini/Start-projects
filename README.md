@@ -3,6 +3,8 @@
 
 # Start-projects
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/e550772d94c14b1b9c6858e5b6936a54)](https://app.codacy.com/gh/Nagraggini/start-projects?utm_source=github.com&utm_medium=referral&utm_content=Nagraggini/start-projects&utm_campaign=Badge_Grade)
+
 Welcome! This is my collection of various programming projects, starter templates, and learning materials.
 
 ## 📝 Blog
