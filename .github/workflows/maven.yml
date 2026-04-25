@@ -9,24 +9,40 @@
 name: Java CI with Maven
 
 on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    push:
+        branches: ["main"] # Fontos, hogy melyik branch van beállítva.
+    pull_request:
+        branches: ["main"] # Fontos, hogy melyik branch van beállítva.
 
 jobs:
-  build:
+    build:
+        runs-on: ubuntu-latest
+        permissions:
+            contents: write # Github repod -> Settings -> Acions -> General -> Allow all actions and reusable workflows; Read and write permissions; Mindkét helyen nyomj ár a mentésre. -> A badge-ekhez kell.
+        steps:
+            - uses: actions/checkout@v4
+            - name: Set up JDK 21 # Java verzió egyezzen azzal, amit projektben használtál. Csekk: Terminálban: java -version
+              uses: actions/setup-java@v4
+              with:
+                  java-version: "21" # Java verzió egyezzen azzal, amit projektben használtál. Csekk: Terminálban: java -version
+                  distribution: "temurin"
+                  cache: maven
 
-    runs-on: ubuntu-latest
+            - name: Build and Test with Maven
+              run: mvn -B clean test
 
-    steps:
-    - uses: actions/checkout@v4
-    - name: Set up JDK 21
-      uses: actions/setup-java@v4
-      with:
-        java-version: '17'
-        distribution: 'temurin'
-        cache: maven
-    - name: Build with Maven
-      run: mvn -B package --file pom.xml
-
+              # Ez a rész generálja a plecsnit a README-be a tesztfutás után!
+            - name: Generate JaCoCo Badge
+              id: jacoco
+              uses: cicirello/jacoco-badge-generator@v2
+              with:
+                  generate-branches-badge: true
+                  jacoco-csv-file: target/site/jacoco/jacoco.csv
+            # Ez a rész pedig visszatölti a képet a GitHubra, hogy be tudd illeszteni
+            - name: Commit and push the badge
+              run: |
+                  git config --local user.email "action@github.com"
+                  git config --local user.name "GitHub Action"
+                  git add .github/badges/*.svg
+                  git commit -m "Updated coverage badge" || exit 0
+                  git push
