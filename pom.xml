@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>ujsagnyilvantarto</groupId>
-    <artifactId>java-modulzaro</artifactId>
+    <groupId>Gyakorlas</groupId>
+    <artifactId>start-projects</artifactId>
     <version>1.1-SNAPSHOT</version> <!--Verzió szám.-->
 
     <properties> <!--Java verzió egyezzen azzal, amit projektben használtál. Csekk: Terminálban: java -version-->
@@ -34,7 +34,10 @@
         </dependency>
     </dependencies>
 
-    <build>
+    <build><!--TODO mindin mappát hozzá kell majd adni.-->
+        <sourceDirectory>java-console-exams/src/main/java</sourceDirectory>
+        <!-- Itt pedig a tesztek -->
+        <testSourceDirectory>java-console-exams/src/test/java</testSourceDirectory>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -83,11 +86,12 @@
                         </goals>
                     </execution>
                 </executions>
-                <!--A html és csv fájlok szép megjelenítéséhez.-->
+                <!--A html és csv, xml fájlok szép megjelenítéséhez.-->
                 <configuration>
                     <formats>
                         <format>HTML</format>
                         <format>CSV</format>
+                        <format>XML</format>
                     </formats>
                 </configuration>
             </plugin>

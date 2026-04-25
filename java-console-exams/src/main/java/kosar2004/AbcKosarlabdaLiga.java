@@ -1,4 +1,4 @@
-package kosar2004;
+package main.java.kosar2004;
 
 import java.time.LocalDate;
 

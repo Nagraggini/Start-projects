@@ -1,4 +1,4 @@
-package kosar2004;
+package main.java.kosar2004;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -22,7 +22,7 @@ public class AbcKosarlabdaLigaFeladatok {
                 // Van amikor ez a jó: StandardCharsets.UTF_8
                 // Van amikor ez a jó:Charset.forName("windows-1250")
 
-                Path path = Path.of("java-console-exams/eredmenyek.csv");
+                Path path = Path.of("java-console-exams/data/eredmenyek.csv");
 
                 // Ellenőrzés és beolvasás egyben
                 if (!Files.exists(path)) {
