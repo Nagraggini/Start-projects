@@ -2,6 +2,8 @@
 [![Java CI with Maven](https://github.com/Nagraggini/start-projects/actions/workflows/maven.yml/badge.svg)](https://github.com/Nagraggini/start-projects/actions/workflows/maven.yml)
 ![Coverage](.github/badges/jacoco.svg)
 ![Branches](.github/badges/branches.svg)
+
+[![GitHub Repo](https://img.shields.io/badge/github-startprojects-fuchsia?logo=github)](https://github.com/Nagraggini/start-projects)
 ![Top Language](https://img.shields.io/github/languages/top/Nagraggini/start-projects)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
@@ -67,7 +69,7 @@ Nyomj egy Ctrl+Shift+P-t.
 Bal szélén a lombikra katt és a Test Explorerben a java projekt neve melletti háromszögre kattints.
 
 Eclipse-ben:
-Jobb klikk a projekten és Build Path -> Configure Build Path -> Libraries lapfül-> Katt a Modulepath-ra és Add Library -> JUnit -> Next -> JUnit 5 -> Finish -> Aztán Apply and Close
+Jobb klikk a projekten és Build Path -> Configure Build Path -> Libraries lapfül-> Katt a Classpath-ra és Add Library -> JUnit -> Next -> JUnit 5 -> Finish -> Aztán Apply and Close
 
 # GitHub Actions (CI/CD) beállítása
 

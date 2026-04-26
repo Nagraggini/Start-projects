@@ -20,7 +20,7 @@ public class JackieFoprogram {
         JackieFeladatok feladatok = new JackieFeladatok();
 
         // Feltöltjük a listát.
-        fajlkezeles.fajlBeolvasas(lista, "java-console-exams/jackie.txt");
+        fajlkezeles.fajlBeolvasas(lista, "java-console-exams/data/jackie.txt");
         feladatok.legtobbVerseny(lista);
         feladatok.evenkentiEredenyek(lista);
         fajlkezeles.htmlFajlLetrehozasEsFeltoltes(lista, "jackie.html");
