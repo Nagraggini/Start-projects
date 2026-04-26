@@ -64,7 +64,10 @@ VS Codeben bal alul Java projects -> Referenced Libraries melletti + jelre katt.
 Nyomj egy Ctrl+Shift+P-t.
 Írd be: "Java: Clean Java Language Server Workspace". -> Reload and delete
 
-Bal széléna lombikra katt és a Test Explorerben a java projekt neve melletti háromszögre kattints.
+Bal szélén a lombikra katt és a Test Explorerben a java projekt neve melletti háromszögre kattints.
+
+Eclipse-ben:
+Jobb klikk a projekten és Build Path -> Configure Build Path -> Libraries lapfül-> Katt a Modulepath-ra és Add Library -> JUnit -> Next -> JUnit 5 -> Finish -> Aztán Apply and Close
 
 # GitHub Actions (CI/CD) beállítása
 

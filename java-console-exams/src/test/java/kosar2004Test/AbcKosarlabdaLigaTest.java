@@ -1,4 +1,4 @@
-package kosar2004;
+package test.java.kosar2004Test;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
