@@ -25,14 +25,8 @@ public class AbcKosarlabdaLigaFeladatok {
 
 		// Kiiratas
 		// lista.forEach(l -> System.out.println(l.toString()));
-
-		// 3. feladat:
-		long realDBHazai = lista.stream().filter(a -> a.getHazai().equals("Real Madrid")).count();
-
-		long realDBIdegen = lista.stream().filter(a -> a.getIdegen().equals("Real Madrid")).count();
-
-		System.out.println("3. feladat: Real Madrid: Hazai: " + realDBHazai + ", Idegen: " + realDBIdegen);
-
+		hanyszorJatszottARealMadridOsszesen(); //3. feladat
+		
 		// 4. feladat:
 		// Megszámoljuk, hogy volt-e döntetlen.
 		long dontetlen = lista.stream(). // Adatfolyammá alakítás.
@@ -83,6 +77,7 @@ public class AbcKosarlabdaLigaFeladatok {
 				.filter(e -> e.getValue() > 20) // Feltétel.
 				.forEach(e -> System.out.println("\t" + e.getKey() + " : " + e.getValue())); // Kiíratás.
 	}
+	
 
 	public static void fajlBeolvasas(Path path) {
 		// 2. feladat:
@@ -114,4 +109,13 @@ public class AbcKosarlabdaLigaFeladatok {
 		}
 	}
 
+	public static void hanyszorJatszottARealMadridOsszesen() {
+
+		// 3. feladat:
+		long realDBHazai = lista.stream().filter(a -> a.getHazai().equals("Real Madrid")).count();
+
+		long realDBIdegen = lista.stream().filter(a -> a.getIdegen().equals("Real Madrid")).count();
+
+		System.out.println("3. feladat: Real Madrid: Hazai: " + realDBHazai + ", Idegen: " + realDBIdegen);
+	}
 }
