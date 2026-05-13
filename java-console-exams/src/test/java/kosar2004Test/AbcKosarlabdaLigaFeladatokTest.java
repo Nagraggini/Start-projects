@@ -23,7 +23,7 @@ public class AbcKosarlabdaLigaFeladatokTest {
 	// Valóságos és hamis metódus is egyszerre.
 	private AbcKosarlabdaLigaFeladatok spyFeladatok;
 
-	private Path utvonal = Path.of("data/eredmenyek.csv");
+	private Path utvonal = Path.of("java-console-exams/data/eredmenyek.csv");
 
 	@BeforeEach // ctrl+shift+o az import fixálása
 	void inicializalas() { // Minden teszt előtt lefut külön-külön.
@@ -35,7 +35,9 @@ public class AbcKosarlabdaLigaFeladatokTest {
 		// fájlból.
 		feladatok = new AbcKosarlabdaLigaFeladatok(mockRepo);
 
-		// Spy létrehozáse valódi objektumon keresztül.
+		// Spy létrehozása valódi objektumon keresztül.
+		// A Spy egy valódi, létező objektumot csomagol be.
+		// TODO spy használata.
 		spyFeladatok = spy(new AbcKosarlabdaLigaFeladatok(mockRepo));
 
 	}

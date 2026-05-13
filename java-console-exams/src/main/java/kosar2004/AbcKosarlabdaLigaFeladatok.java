@@ -16,7 +16,7 @@ public class AbcKosarlabdaLigaFeladatok {
 	// Példány szintű lista.
 	private static ArrayList<AbcKosarlabdaLiga> lista = new ArrayList<>();
 
-	public static Path utvonal = Path.of("data/eredmenyek.csv");
+	public static Path utvonal = Path.of("java-console-exams/data/eredmenyek.csv");
 
 	// Konstruktoron keresztül "befecskendezzük" a függőséget (Dependency
 	// Injection).
