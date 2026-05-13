@@ -1,4 +1,4 @@
-package main.java.kosar2004;
+package kosar2004;
 
 import java.nio.file.Path;
 import java.time.LocalDate;

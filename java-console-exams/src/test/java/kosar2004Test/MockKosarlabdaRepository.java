@@ -1,10 +1,10 @@
-package test.java.kosar2004Test;
+package kosar2004Test;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-import main.java.kosar2004.AbcKosarlabdaLiga;
-import main.java.kosar2004.IKosarlabdaRepository;
+import kosar2004.AbcKosarlabdaLiga;
+import kosar2004.IKosarlabdaRepository;
 
 //Ez a Mock osztály. Színlelt/mű objektum/adatforrás a teszteléshez.
 public class MockKosarlabdaRepository implements IKosarlabdaRepository {

@@ -1,8 +1,8 @@
-package test.java.kosar2004Test;
+package kosar2004Test;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.spy;
 
 import java.nio.file.Path;
 
@@ -11,9 +11,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import main.java.kosar2004.AbcKosarlabdaLigaFeladatok;
-import main.java.kosar2004.FajlKosarlabdaRepository;
-import main.java.kosar2004.IKosarlabdaRepository;
+import kosar2004.AbcKosarlabdaLigaFeladatok;
+import kosar2004.FajlKosarlabdaRepository;
+import kosar2004.IKosarlabdaRepository;
 
 public class AbcKosarlabdaLigaFeladatokTest {
 
