@@ -1,12 +1,8 @@
 package main.java.kosar2004;
 
-import java.io.IOException;
-import java.nio.charset.Charset;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.stream.Collectors;
 
 public class AbcKosarlabdaLigaFeladatok {
@@ -14,36 +10,60 @@ public class AbcKosarlabdaLigaFeladatok {
 
 	// puska: https://nagraggini.github.io/my-awesome-book/java.html
 
-	private static IKosarlabdaRepository repository;
-	
-	// Konstruktoron keresztül "befecskendezzük" a függőséget (Dependency Injection)
-    public AbcKosarlabdaLigaFeladatok(IKosarlabdaRepository repo) {
-        this.repository = repo;
-    }
-    
-    public void feladatokFuttatasa() {
-        
-        // Innen mehet a stream-elés és a számolás...
-    }
-    
-	public static ArrayList<AbcKosarlabdaLiga> lista = new ArrayList<>();
+	// Példány szintű repository.
+	private final IKosarlabdaRepository repository;
+
+	// Példány szintű lista.
+	private static ArrayList<AbcKosarlabdaLiga> lista = new ArrayList<>();
+
 	public static Path utvonal = Path.of("data/eredmenyek.csv");
 
-	public static void main(String[] args) {
+	// Konstruktoron keresztül "befecskendezzük" a függőséget (Dependency
+	// Injection).
+	public AbcKosarlabdaLigaFeladatok(IKosarlabdaRepository repo) {
+		this.repository = repo;
+	}
 
-		ArrayList<AbcKosarlabdaLiga> adatok = repository.osszesMerkozesLekerese();
-		
-		fajlBeolvasas(utvonal);
+	public void inditas() {
+		// Itt használjuk az interfészt!
+		// Mindegy, hogy a repo fájlból olvas, vagy mock adatot ad a lista feltöltődik.
+		this.lista = repository.osszesMerkozesLekerese();
 
-		// System.out.println("sorok száma: " + lista.size());
+		if (getLista() == null || getLista().isEmpty()) {
+			System.out.println("Nincs adat a feldolgozáshoz.");
+			return;
+		}
 
 		// Kiiratas
-		// lista.forEach(l -> System.out.println(l.toString()));
-		hanyszorJatszottARealMadridOsszesen(); //3. feladat
-		
+		kiiratas();
+
+		// 3. feladat
+		hanyszorJatszottARealMadridOsszesen();
+	}
+
+	/**
+	 * Az csv fájl teszteléséhez.
+	 */
+	public static ArrayList<AbcKosarlabdaLiga> getLista() {
+		return lista;
+	}
+
+	public static void main(String[] args) {
+		// 1. Létrehozzuk a konkrét megvalósítást (ami tényleg fájlból olvas)
+		// Ehhez kell egy osztály, ami implementálja az IKosarlabdaRepository-t!
+		IKosarlabdaRepository valodiRepo = new FajlKosarlabdaRepository(utvonal);
+
+		// 2. "Beinjektáljuk" a megvalósítást
+		AbcKosarlabdaLigaFeladatok program = new AbcKosarlabdaLigaFeladatok(valodiRepo);
+
+		// 3. Elindítjuk.
+		program.inditas();
+
+		// System.out.println("Sorok száma: " + lista.size());
+
 		// 4. feladat:
 		// Megszámoljuk, hogy volt-e döntetlen.
-		long dontetlen = lista.stream(). // Adatfolyammá alakítás.
+		long dontetlen = getLista().stream(). // Adatfolyammá alakítás.
 				filter(x -> x.getHazaiPont() == x.getIdegenPont()) // Szűrési feltétel.
 				.count(); // Megszámoljuk.
 
@@ -57,7 +77,7 @@ public class AbcKosarlabdaLigaFeladatok {
 		 * nevét, és a csapat játszott otthon is legalább egy mérkőzést.)
 		 */
 
-		String barcelonaiCsapatNeve = lista.stream().filter(x -> x.getHazai().contains("Barcelona"))
+		String barcelonaiCsapatNeve = getLista().stream().filter(x -> x.getHazai().contains("Barcelona"))
 				.map(x -> x.getHazai()).findFirst().get();
 		System.out.println("5. feladat: barcelonai csapat neve: " + barcelonaiCsapatNeve);
 
@@ -69,7 +89,7 @@ public class AbcKosarlabdaLigaFeladatok {
 		LocalDate datum = LocalDate.of(2004, 11, 21);
 
 		System.out.println("6. feladat:");
-		lista.stream().filter(x -> x.getIdopont().isEqual(datum)).forEach(x -> System.out.println(
+		getLista().stream().filter(x -> x.getIdopont().isEqual(datum)).forEach(x -> System.out.println(
 				"\t" + x.getHazai() + "-" + x.getIdegen() + " (" + x.getHazaiPont() + ":" + x.getIdegenPont() + ")"));
 
 		// 7. feladat
@@ -81,9 +101,9 @@ public class AbcKosarlabdaLigaFeladatok {
 		 */
 
 		System.out.println("7. feladat: ");
-		lista.stream() // Az első stream az eredeti adatokat dolgozza fel.
-						// Ez a "lelke" az egésznek. Egy Map<String, Long> struktúrát hoz létre, ahol a
-						// kulcs a helyszín, az érték pedig az adott helyszínhez tartozó elemek száma.
+		getLista().stream() // Az első stream az eredeti adatokat dolgozza fel.
+				// Ez a "lelke" az egésznek. Egy Map<String, Long> struktúrát hoz létre, ahol a
+				// kulcs a helyszín, az érték pedig az adott helyszínhez tartozó elemek száma.
 				.collect(Collectors.groupingBy(AbcKosarlabdaLiga::getHelyszin, Collectors.counting()))
 				// Mivel a Map-en nem tudunk közvetlenül streamelni, le kell kérnünk a
 				// kulcs-érték párok halmazát (entrySet), majd abból indítunk egy új streamet.
@@ -91,45 +111,19 @@ public class AbcKosarlabdaLigaFeladatok {
 				.filter(e -> e.getValue() > 20) // Feltétel.
 				.forEach(e -> System.out.println("\t" + e.getKey() + " : " + e.getValue())); // Kiíratás.
 	}
-	
 
-	public static void fajlBeolvasas(Path path) {
-		// 2. feladat:
-		// Van amikor ez a jó: StandardCharsets.UTF_8
-		// Van amikor ez a jó:Charset.forName("windows-1250")
-
-		// Ellenőrzés és beolvasás egyben
-		if (!Files.exists(path)) {
-			System.out.println("Nem létezik a fájl!");
-			System.out.println("Itt keresem: " + System.getProperty("user.dir"));
-			
-			throw new NullPointerException("Nem találom a fájlt");
-			//return; // Ha nincs fájl, ne is menjünk tovább a try-ra, ez akkor jön jól, ha nincs throw
-		}
-
-		try {
-			List<String> sorok = Files.readAllLines(path, Charset.forName("windows-1250"));
-
-			// 1-től megyünk, mert van oszlopnév is.
-			for (int i = 1; i < sorok.size(); i++) {
-				String[] t = sorok.get(i).split(";");
-
-				lista.add(new AbcKosarlabdaLiga(t[0], t[1], Integer.parseInt(t[2]), Integer.parseInt(t[3]), t[4],
-						LocalDate.parse(t[5])));
-
-			}
-		} catch (IOException ex) {
-			System.getLogger(AbcKosarlabdaLiga.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
-		}
+	public static void kiiratas() {
+		getLista().forEach(l -> System.out.println(l.toString()));
 	}
 
 	public static void hanyszorJatszottARealMadridOsszesen() {
 
 		// 3. feladat:
-		long realDBHazai = lista.stream().filter(a -> a.getHazai().equals("Real Madrid")).count();
+		long realDBHazai = getLista().stream().filter(a -> a.getHazai().equals("Real Madrid")).count();
 
-		long realDBIdegen = lista.stream().filter(a -> a.getIdegen().equals("Real Madrid")).count();
+		long realDBIdegen = getLista().stream().filter(a -> a.getIdegen().equals("Real Madrid")).count();
 
 		System.out.println("3. feladat: Real Madrid: Hazai: " + realDBHazai + ", Idegen: " + realDBIdegen);
 	}
+
 }

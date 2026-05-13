@@ -1,71 +1,82 @@
 package test.java.kosar2004Test;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.*;
 
 import java.nio.file.Path;
-import java.time.LocalDate;
-import java.util.ArrayList;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import main.java.kosar2004.AbcKosarlabdaLiga;
 import main.java.kosar2004.AbcKosarlabdaLigaFeladatok;
+import main.java.kosar2004.FajlKosarlabdaRepository;
+import main.java.kosar2004.IKosarlabdaRepository;
 
 public class AbcKosarlabdaLigaFeladatokTest {
 
-	AbcKosarlabdaLiga abckosarlabdaObj;
-	AbcKosarlabdaLigaFeladatok abckosarlabdafeladatokObj;
+	private IKosarlabdaRepository mockRepo;
+	private AbcKosarlabdaLigaFeladatok feladatok;
+
+	// Valóságos és hamis metódus is egyszerre.
+	private AbcKosarlabdaLigaFeladatok spyFeladatok;
+
+	private Path utvonal = Path.of("data/eredmenyek.csv");
 
 	@BeforeEach // ctrl+shift+o az import fixálása
 	void inicializalas() { // Minden teszt előtt lefut külön-külön.
-		LocalDate idopont = LocalDate.now().minusMonths(1);
+		// 1. Létrehozzuk a mock adatforrást.
+		mockRepo = new MockKosarlabdaRepository();
 
-		abckosarlabdaObj = new AbcKosarlabdaLiga("7up", "6down", 81, 73, "Barcelona", idopont);
+		// 2. Inicializáljuk a feladatokat végző osztályt a mock-al.
+		// Így a feladatok osztál y ezentúl a mockRepo-tól kéri az adatokat, nem a csv
+		// fájlból.
+		feladatok = new AbcKosarlabdaLigaFeladatok(mockRepo);
 
-		AbcKosarlabdaLiga realMadridMeccs = new AbcKosarlabdaLiga("Real Madrid", "Barcelona", 88, 85, "Madrid",
-				LocalDate.of(2024, 5, 10));
-		AbcKosarlabdaLiga kiutesesMeccs = new AbcKosarlabdaLiga("Lakers", "Real Madrid", 120, 92, "Los Angeles",
-				LocalDate.of(2024, 5, 11));
-		AbcKosarlabdaLiga vedekezoMeccs = new AbcKosarlabdaLiga("Olympiacos", "Fenerbahce", 62, 58, "Piraeus",
-				LocalDate.now().minusDays(3));
-		AbcKosarlabdaLiga magyarMeccs = new AbcKosarlabdaLiga("Falco KC", "Alba Fehérvár", 94, 82, "Szombathely",
-				LocalDate.now().minusWeeks(2));
-		AbcKosarlabdaLiga vendegGyozelem = new AbcKosarlabdaLiga("Bulls", "Celtics", 101, 115, "Chicago",
-				LocalDate.of(2024, 4, 20));
-		
-		//TODO
-		abckosarlabdafeladatokObj.lista .add(abckosarlabdaObj);
-		//abckosarlabdafeladatokObj = new AbcKosarlabdaLigaFeladatok();
+		// Spy létrehozáse valódi objektumon keresztül.
+		spyFeladatok = spy(new AbcKosarlabdaLigaFeladatok(mockRepo));
+
 	}
 
 	@AfterEach
-	void reseteles() {
-		abckosarlabdafeladatokObj.lista = null;
+	void reseteles() { // Minden teszt után lefut külön-külön.
+
 	}
 
 	@Test
-	@DisplayName("Lista feltöltése.")
+	@DisplayName("Lista feltöltése csv fájlból.")
 	void listaFeltolteseTest() {
-		Path utvonal = Path.of("data/eredmenyek.csv");
-		AbcKosarlabdaLigaFeladatok.fajlBeolvasas(utvonal);
+		// 1. Létrehozzuk a konkrét megvalósítást (ami tényleg fájlból olvas)
+		// Ehhez kell egy osztály, ami implementálja az IKosarlabdaRepository-t!
+		IKosarlabdaRepository valodiRepo = new FajlKosarlabdaRepository(utvonal);
+
+		// 2. "Beinjektáljuk" a megvalósítást
+		AbcKosarlabdaLigaFeladatok program = new AbcKosarlabdaLigaFeladatok(valodiRepo);
+
+		// 3. Elindítjuk.
+		program.inditas();
+
 		// Ellenőrizzük, hogy a lista nem maradt-e üres
-		assertTrue(AbcKosarlabdaLigaFeladatok.lista.size() > 0,
+		assertTrue(AbcKosarlabdaLigaFeladatok.getLista().size() > 0,
 				"A listának tartalmaznia kell adatokat a beolvasás után!");
 	}
 
 	@Test
-	@Disabled
-	@DisplayName("Lista feltöltése negatív teszt.")
+	@DisplayName("Lista feltöltése csv fájlból negatív teszt.")
 	void listaFeltolteseNegativTest() {
-		Path utvonal = Path.of("eredmenyek.csv");
+		Path hibasUtvonal = Path.of("eredmenyek.csv");
 
-		assertThrows(NullPointerException.class, () -> AbcKosarlabdaLigaFeladatok.fajlBeolvasas(utvonal));
+		// 1. Létrehozzuk a konkrét megvalósítást (ami tényleg fájlból olvas)
+		// Ehhez kell egy osztály, ami implementálja az IKosarlabdaRepository-t!
+		IKosarlabdaRepository valodiRepo = new FajlKosarlabdaRepository(hibasUtvonal);
+
+		// 2. "Beinjektáljuk" a megvalósítást
+		AbcKosarlabdaLigaFeladatok program = new AbcKosarlabdaLigaFeladatok(valodiRepo);
+
+		// 3. Elindítjuk és ellenőrizzük a hibadobást.
+		assertThrows(NullPointerException.class, () -> program.inditas());
 	}
 
 }
