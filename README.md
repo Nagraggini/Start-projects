@@ -1,15 +1,30 @@
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/4632ae8e7e5e427bbca577c13f9dec4c)](https://app.codacy.com/gh/Nagraggini/start-projects/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
+<!-- 1. Státusz és Minőség -->
 [![Java CI with Maven](https://github.com/Nagraggini/start-projects/actions/workflows/maven.yml/badge.svg)](https://github.com/Nagraggini/start-projects/actions/workflows/maven.yml)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/4632ae8e7e5e427bbca577c13f9dec4c)](https://app.codacy.com/gh/Nagraggini/start-projects/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
+
+<!-- 2. Teszt adatok -->
 ![Coverage](.github/badges/jacoco.svg)
 ![Branches](.github/badges/branches.svg)
 
-[![GitHub Repo](https://img.shields.io/badge/github-startprojects-fuchsia?logo=github)](https://github.com/Nagraggini/start-projects)
+<!-- 3. Technológia és Eszközök -->
 ![Top Language](https://img.shields.io/github/languages/top/Nagraggini/start-projects)
-![License](https://img.shields.io/badge/license-MIT-green)
+![JUnit 5](https://img.shields.io/badge/tested_with-JUnit5-brightgreen?logo=junit5)
+![Mockito](https://img.shields.io/badge/mocked_with-Mockito-blue?logo=mockito)
 
+<!-- 4. Egyéb -->
+![License](https://img.shields.io/badge/license-MIT-green)
+[![GitHub Repo](https://img.shields.io/badge/github-startprojects-fuchsia?logo=github)](https://github.com/Nagraggini/start-projects)
+
+<!--TODO SonarCloud 
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Nagraggini_start-projects&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Nagraggini_start-projects)
+-->
 # Start-projects
 
 Welcome! This is my collection of various programming projects, starter templates, and learning materials.
+
+## Engineering Workflow & Quality Control
+
+[![](https://mermaid.ink/img/pako:eNqdk9uO0zAQhl_FmpUQSGlJsmkOlhZpm7QgRKXlLIG5cBMnterYkeN0t1R9d5zDwpY7yJX_mX8-j53xCXJVMMAwm82IzJUseYWJREjQo-oMRgWtNOsDZsdq1mu9J3Jwl0Ld5zuqDXr3wTrabltp2uzQHW-Y4JJ9J5CxAxOqqZk06KvS-76EwI-eN37L5wRec_Om26Lb3HAlWwIv_qRvLSO1DaK7rt1dFKYnAht6YBItOy4KAuc-x2TxtJMvVPCC9ljLed9ZZY7oGfrEWsNldcHLrOPtZ8kNWljHRuV7btSFY9U7aKpShVJ1YJpW7CK_Hnul-RG9RB-VpDoVqismz9hZfyR0c_MKLUexHEQ6inQQmd1-PQayIbAictpkiTFutMpZ206RzEaMUmKSKytrZjTPHw3rC0MuaNtmrEQTBZVcCHzlX8fhdei0Rqs9w1dlWU7r2T0vzA77zYOTK6H0kPsL1dMnjleGJdv-J2fqe0IVfpL4_r-hWnMUzF7adKgk9Nfrp5n1RQYcqDQvABvdMQdqpmvaSzj1NQSGeSeA7XKYeSDybGsaKr8pVT-WadVVO8AlFa1VXWOnjWXcvhla_45q---ZTlUnDWDvemAAPsED4MCbJ14QL0I3CMLYXbgLB46A_UUyj30vCaIojCM38M8O_Bx2dedh5PpuHHtetEiSII4cYIUdVb0Z3_HwnM-_ALLML0Q?type=png)](https://mermaid.live/edit#pako:eNqdk9uO0zAQhl_FmpUQSGlJsmkOlhZpm7QgRKXlLIG5cBMnterYkeN0t1R9d5zDwpY7yJX_mX8-j53xCXJVMMAwm82IzJUseYWJREjQo-oMRgWtNOsDZsdq1mu9J3Jwl0Ld5zuqDXr3wTrabltp2uzQHW-Y4JJ9J5CxAxOqqZk06KvS-76EwI-eN37L5wRec_Om26Lb3HAlWwIv_qRvLSO1DaK7rt1dFKYnAht6YBItOy4KAuc-x2TxtJMvVPCC9ljLed9ZZY7oGfrEWsNldcHLrOPtZ8kNWljHRuV7btSFY9U7aKpShVJ1YJpW7CK_Hnul-RG9RB-VpDoVqismz9hZfyR0c_MKLUexHEQ6inQQmd1-PQayIbAictpkiTFutMpZ206RzEaMUmKSKytrZjTPHw3rC0MuaNtmrEQTBZVcCHzlX8fhdei0Rqs9w1dlWU7r2T0vzA77zYOTK6H0kPsL1dMnjleGJdv-J2fqe0IVfpL4_r-hWnMUzF7adKgk9Nfrp5n1RQYcqDQvABvdMQdqpmvaSzj1NQSGeSeA7XKYeSDybGsaKr8pVT-WadVVO8AlFa1VXWOnjWXcvhla_45q---ZTlUnDWDvemAAPsED4MCbJ14QL0I3CMLYXbgLB46A_UUyj30vCaIojCM38M8O_Bx2dedh5PpuHHtetEiSII4cYIUdVb0Z3_HwnM-_ALLML0Q)
 
 ## 📝 Blog
 

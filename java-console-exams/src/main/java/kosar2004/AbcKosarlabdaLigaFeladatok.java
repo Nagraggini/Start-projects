@@ -14,11 +14,25 @@ public class AbcKosarlabdaLigaFeladatok {
 
 	// puska: https://nagraggini.github.io/my-awesome-book/java.html
 
+	private static IKosarlabdaRepository repository;
+	
+	// Konstruktoron keresztül "befecskendezzük" a függőséget (Dependency Injection)
+    public AbcKosarlabdaLigaFeladatok(IKosarlabdaRepository repo) {
+        this.repository = repo;
+    }
+    
+    public void feladatokFuttatasa() {
+        
+        // Innen mehet a stream-elés és a számolás...
+    }
+    
 	public static ArrayList<AbcKosarlabdaLiga> lista = new ArrayList<>();
 	public static Path utvonal = Path.of("data/eredmenyek.csv");
 
 	public static void main(String[] args) {
 
+		ArrayList<AbcKosarlabdaLiga> adatok = repository.osszesMerkozesLekerese();
+		
 		fajlBeolvasas(utvonal);
 
 		// System.out.println("sorok száma: " + lista.size());
