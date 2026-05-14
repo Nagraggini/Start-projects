@@ -148,7 +148,7 @@ jobs:
                   git config --local user.name "GitHub Action"
                   git add .github/badges/*.svg
                   git commit -m "Updated coverage badge" || exit 0
-                  git push
+                  git push origin HEAD:main # Itt adjuk meg, hogy a HEAD-et a main-re tolja
 ```
 
 Commit changes...-re nyomj. 
