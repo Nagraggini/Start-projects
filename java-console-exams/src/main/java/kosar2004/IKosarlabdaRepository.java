@@ -15,4 +15,6 @@ public interface IKosarlabdaRepository {
 	// Visszaadja az összes mérkőzést (mindegy, hogy fájlból vagy memóriából)
 	ArrayList<AbcKosarlabdaLiga> osszesMerkozesLekerese();
 
+	void setLista(int index, AbcKosarlabdaLiga dontetlenFelulIrasa);
+
 }

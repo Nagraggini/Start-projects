@@ -12,48 +12,55 @@ import java.util.List;
  * Ez az osztály tartalmazza a fájlbeolvasó logikát.
  */
 public class FajlKosarlabdaRepository implements IKosarlabdaRepository {
-	
+
 	private Path fajlutvonal;
-	
-	//Konstruktor.
+	ArrayList<AbcKosarlabdaLiga> lista;
+
+	// Konstruktor.
 	public FajlKosarlabdaRepository(Path fajlutvonal) {
-		this.fajlutvonal=fajlutvonal;
+		this.fajlutvonal = fajlutvonal;
 	}
 
 	@Override
 	public ArrayList<AbcKosarlabdaLiga> osszesMerkozesLekerese() {
 		// 2. feladat:
-				// Van amikor ez a jó: StandardCharsets.UTF_8
-				// Van amikor ez a jó:Charset.forName("windows-1250")
+		// Van amikor ez a jó: StandardCharsets.UTF_8
+		// Van amikor ez a jó:Charset.forName("windows-1250")
 
-				// Ellenőrzés és beolvasás egyben
-				if (!Files.exists(fajlutvonal)) {
-					System.out.println("Nem létezik a fájl!");
-					System.out.println("Itt keresem: " + System.getProperty("user.dir"));
+		// Ellenőrzés és beolvasás egyben
+		if (!Files.exists(fajlutvonal)) {
+			System.out.println("Nem létezik a fájl!");
+			System.out.println("Itt keresem: " + System.getProperty("user.dir"));
 
-					throw new NullPointerException("Nem találom a fájlt");
-					// return; // Ha nincs fájl, ne is menjünk tovább a try-ra, ez akkor jön jól, ha
-					// nincs throw
-				}
+			throw new IllegalArgumentException("Nem találom a fájlt");
+			// return; // Ha nincs fájl, ne is menjünk tovább a try-ra, ez akkor jön jól, ha
+			// nincs throw
+		}
 
-				ArrayList<AbcKosarlabdaLiga> lista = new ArrayList<>();
-				
-				try {
-					List<String> sorok = Files.readAllLines(fajlutvonal, Charset.forName("windows-1250"));
+		lista = new ArrayList<>();
 
-					// 1-től megyünk, mert van oszlopnév is.
-					for (int i = 1; i < sorok.size(); i++) {
-						String[] t = sorok.get(i).split(";");
+		try {
+			List<String> sorok = Files.readAllLines(fajlutvonal, Charset.forName("windows-1250"));
 
-						lista.add(new AbcKosarlabdaLiga(t[0], t[1], Integer.parseInt(t[2]), Integer.parseInt(t[3]), t[4],
-								LocalDate.parse(t[5])));
+			// 1-től megyünk, mert van oszlopnév is.
+			for (int i = 1; i < sorok.size(); i++) {
+				String[] t = sorok.get(i).split(";");
 
-					}
-				} catch (IOException ex) {
-					System.getLogger(AbcKosarlabdaLiga.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
-				}
-				
+				lista.add(new AbcKosarlabdaLiga(t[0], t[1], Integer.parseInt(t[2]), Integer.parseInt(t[3]), t[4],
+						LocalDate.parse(t[5])));
+
+			}
+		} catch (IOException ex) {
+			System.getLogger(AbcKosarlabdaLiga.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+		}
+
 		return lista;
+	}
+
+	@Override
+	public void setLista(int index, AbcKosarlabdaLiga liga) {
+		lista.set(index, liga);
+
 	}
 
 }

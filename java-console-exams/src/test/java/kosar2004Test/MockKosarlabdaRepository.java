@@ -9,15 +9,17 @@ import kosar2004.IKosarlabdaRepository;
 //Ez a Mock osztály. Színlelt/mű objektum/adatforrás a teszteléshez.
 public class MockKosarlabdaRepository implements IKosarlabdaRepository {
 
+	ArrayList<AbcKosarlabdaLiga> mockLista;
+
 	@Override
 	public ArrayList<AbcKosarlabdaLiga> osszesMerkozesLekerese() {
-		ArrayList<AbcKosarlabdaLiga> mockLista = new ArrayList<>();
-	
+		mockLista = new ArrayList<>();
+
 		LocalDate idopont = LocalDate.now().minusMonths(1);
-		
+
 		// Fix tesztadatok a teszteléshez.
 		mockLista.add(new AbcKosarlabdaLiga("7up", "6down", 81, 73, "Barcelona", idopont));
-		mockLista.add(new AbcKosarlabdaLiga("Real Madrid", "Barcelona", 88, 85, "Madrid", LocalDate.of(2024, 5, 10)));
+		mockLista.add(new AbcKosarlabdaLiga("Real Madrid", "Barcelona", 88, 88, "Madrid", LocalDate.of(2024, 5, 10)));
 		mockLista
 				.add(new AbcKosarlabdaLiga("Lakers", "Real Madrid", 120, 92, "Los Angeles", LocalDate.of(2024, 5, 11)));
 		mockLista.add(
@@ -27,5 +29,10 @@ public class MockKosarlabdaRepository implements IKosarlabdaRepository {
 		mockLista.add(new AbcKosarlabdaLiga("Bulls", "Celtics", 101, 115, "Chicago", LocalDate.of(2024, 4, 20)));
 
 		return mockLista;
+	}
+
+	@Override
+	public void setLista(int index, AbcKosarlabdaLiga liga) {
+		mockLista.set(index, liga);
 	}
 }
