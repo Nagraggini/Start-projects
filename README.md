@@ -1,6 +1,7 @@
 <!-- 1. Státusz és Minőség -->
 [![Java CI with Maven](https://github.com/Nagraggini/start-projects/actions/workflows/maven.yml/badge.svg)](https://github.com/Nagraggini/start-projects/actions/workflows/maven.yml)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/4632ae8e7e5e427bbca577c13f9dec4c)](https://app.codacy.com/gh/Nagraggini/start-projects/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Nagraggini_start-projects&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Nagraggini_start-projects)
 
 <!-- 2. Teszt adatok -->
 ![Coverage](.github/badges/jacoco.svg)
@@ -15,9 +16,6 @@
 ![License](https://img.shields.io/badge/license-MIT-green)
 [![GitHub Repo](https://img.shields.io/badge/github-startprojects-fuchsia?logo=github)](https://github.com/Nagraggini/start-projects)
 
-<!--TODO SonarCloud 
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Nagraggini_start-projects&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Nagraggini_start-projects)
--->
 # Start-projects
 
 Welcome! This is my collection of various programming projects, starter templates, and learning materials.
