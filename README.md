@@ -146,7 +146,8 @@ jobs:
                   git config --local user.name "GitHub Action"
                   git add .github/badges/*.svg
                   git commit -m "Updated coverage badge" || exit 0
-                  git push origin HEAD:main # Itt adjuk meg, hogy a HEAD-et a main-re tolja
+                  git pull origin main --no-rebase
+                  git push origin HEAD:main
 ```
 
 Commit changes...-re nyomj. 
@@ -165,6 +166,38 @@ Github repod -> Settings -> Acions -> General -> Allow all actions and reusable 
 Read and write permissions
 
 Ahány helyen változtatsz annyi helyen kell a save-re nyomni.
+
+# .gitignore fájl
+
+```gitignore
+# Java lefordított bytecode fájlok
+*.class
+
+# Build mappák (Maven / IDE generálja)
+bin/
+out/
+target/
+
+# Eclipse fájlok
+.settings/
+.metadata/
+.classpath
+.project
+
+# IntelliJ IDEA fájlok
+*.iml
+.idea/
+
+# VS Code beállítások
+.vscode/
+
+# Vim ideiglenes fájlok
+*.swp
+
+# Operációs rendszer által generált fájlok
+.DS_Store
+Thumbs.db
+```
 
 ## Függőségek (dependencies)
 
