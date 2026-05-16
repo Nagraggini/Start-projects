@@ -1,21 +1,27 @@
-# Java lefordított bájtkód (ezt nem akarjuk verziókezelni)
+# Java lefordított bytecode fájlok
 *.class
 
-# IDE (fejlesztőkörnyezet) specifikus fájlok
-.settings/
-.bin/
-.metadata/
-.classpath
-.project
-*.iml
-.idea/
-*.swp
-
-# Build könyvtárak (ahová a Java fordítja a fájlokat)
+# Build mappák (Maven / IDE generálja)
 bin/
 out/
 target/
 
-# Operációs rendszer fájlok
+# Eclipse fájlok
+.settings/
+.metadata/
+.classpath
+.project
+
+# IntelliJ IDEA fájlok
+*.iml
+.idea/
+
+# VS Code beállítások
+.vscode/
+
+# Vim ideiglenes fájlok
+*.swp
+
+# Operációs rendszer által generált fájlok
 .DS_Store
 Thumbs.db
